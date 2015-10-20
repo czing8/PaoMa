@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,91 +14,70 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F10D5F071B71A37400932FCF"
-               BuildableName = "AutoScrollLabel.app"
-               BlueprintName = "AutoScrollLabel"
-               ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F10D5F201B71A37400932FCF"
-               BuildableName = "AutoScrollLabelTests.xctest"
-               BlueprintName = "AutoScrollLabelTests"
-               ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
+               BlueprintIdentifier = "F17F36401BD62B510091205B"
+               BuildableName = "MarqueeBar.app"
+               BlueprintName = "MarqueeBar"
+               ReferencedContainer = "container:MarqueeBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F10D5F201B71A37400932FCF"
-               BuildableName = "AutoScrollLabelTests.xctest"
-               BlueprintName = "AutoScrollLabelTests"
-               ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F10D5F071B71A37400932FCF"
-            BuildableName = "AutoScrollLabel.app"
-            BlueprintName = "AutoScrollLabel"
-            ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
+            BlueprintIdentifier = "F17F36401BD62B510091205B"
+            BuildableName = "MarqueeBar.app"
+            BlueprintName = "MarqueeBar"
+            ReferencedContainer = "container:MarqueeBar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F10D5F071B71A37400932FCF"
-            BuildableName = "AutoScrollLabel.app"
-            BlueprintName = "AutoScrollLabel"
-            ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
+            BlueprintIdentifier = "F17F36401BD62B510091205B"
+            BuildableName = "MarqueeBar.app"
+            BlueprintName = "MarqueeBar"
+            ReferencedContainer = "container:MarqueeBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F10D5F071B71A37400932FCF"
-            BuildableName = "AutoScrollLabel.app"
-            BlueprintName = "AutoScrollLabel"
-            ReferencedContainer = "container:AutoScrollLabel.xcodeproj">
+            BlueprintIdentifier = "F17F36401BD62B510091205B"
+            BuildableName = "MarqueeBar.app"
+            BlueprintName = "MarqueeBar"
+            ReferencedContainer = "container:MarqueeBar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

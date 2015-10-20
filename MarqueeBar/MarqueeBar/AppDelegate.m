@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  AutoScrollLabel
+//  MarqueeBar
 //
-//  Created by Vols on 15/8/5.
-//  Copyright (c) 2015年 Vols. All rights reserved.
+//  Created by Vols on 15/10/20.
+//  Copyright © 2015年 Vols. All rights reserved.
 //
 
 #import "AppDelegate.h"

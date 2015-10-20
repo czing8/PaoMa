@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AutoScrollLabel.xcscheme</key>
+		<key>MarqueeBar.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>F10D5F071B71A37400932FCF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F10D5F201B71A37400932FCF</key>
+		<key>F17F36401BD62B510091205B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
