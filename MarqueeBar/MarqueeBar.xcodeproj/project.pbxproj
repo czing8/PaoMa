@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1489ABF1DE2E714000AD269 /* V2MarqueeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1489ABE1DE2E714000AD269 /* V2MarqueeBar.m */; };
+		F1489AC21DE2F28D000AD269 /* V3MarqueeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1489AC11DE2F28D000AD269 /* V3MarqueeBar.m */; };
 		F17F36461BD62B510091205B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F36451BD62B510091205B /* main.m */; };
 		F17F36491BD62B510091205B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F36481BD62B510091205B /* AppDelegate.m */; };
 		F17F364C1BD62B510091205B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F364B1BD62B510091205B /* ViewController.m */; };
 		F17F364F1BD62B510091205B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17F364D1BD62B510091205B /* Main.storyboard */; };
 		F17F36511BD62B510091205B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17F36501BD62B510091205B /* Assets.xcassets */; };
 		F17F36541BD62B510091205B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F17F36521BD62B510091205B /* LaunchScreen.storyboard */; };
-		F17F36621BD636B60091205B /* MarqueeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F36611BD636B60091205B /* MarqueeBar.m */; settings = {ASSET_TAGS = (); }; };
-		F17F36691BD637080091205B /* TextFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F36671BD637080091205B /* TextFlowView.m */; settings = {ASSET_TAGS = (); }; };
-		F17F366D1BD637EE0091205B /* VAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F366C1BD637EE0091205B /* VAutoScrollLabel.m */; settings = {ASSET_TAGS = (); }; };
+		F17F36621BD636B60091205B /* VMarqueeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F17F36611BD636B60091205B /* VMarqueeBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F1489ABD1DE2E714000AD269 /* V2MarqueeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V2MarqueeBar.h; sourceTree = "<group>"; };
+		F1489ABE1DE2E714000AD269 /* V2MarqueeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V2MarqueeBar.m; sourceTree = "<group>"; };
+		F1489AC01DE2F28D000AD269 /* V3MarqueeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V3MarqueeBar.h; sourceTree = "<group>"; };
+		F1489AC11DE2F28D000AD269 /* V3MarqueeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V3MarqueeBar.m; sourceTree = "<group>"; };
 		F17F36411BD62B510091205B /* MarqueeBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarqueeBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17F36451BD62B510091205B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F17F36471BD62B510091205B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,12 +33,8 @@
 		F17F36501BD62B510091205B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F17F36531BD62B510091205B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F17F36551BD62B510091205B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F17F36601BD636B60091205B /* MarqueeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeBar.h; sourceTree = "<group>"; };
-		F17F36611BD636B60091205B /* MarqueeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeBar.m; sourceTree = "<group>"; };
-		F17F36671BD637080091205B /* TextFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFlowView.m; sourceTree = "<group>"; };
-		F17F36681BD637080091205B /* TextFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFlowView.h; sourceTree = "<group>"; };
-		F17F366B1BD637EE0091205B /* VAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAutoScrollLabel.h; sourceTree = "<group>"; };
-		F17F366C1BD637EE0091205B /* VAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAutoScrollLabel.m; sourceTree = "<group>"; };
+		F17F36601BD636B60091205B /* VMarqueeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VMarqueeBar.h; sourceTree = "<group>"; };
+		F17F36611BD636B60091205B /* VMarqueeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VMarqueeBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +67,6 @@
 		F17F36431BD62B510091205B /* MarqueeBar */ = {
 			isa = PBXGroup;
 			children = (
-				F17F366A1BD637EE0091205B /* VAutoScrollLabel */,
-				F17F36631BD636C60091205B /* Paoma */,
 				F17F365F1BD636B60091205B /* MarqueeBar */,
 				F17F36471BD62B510091205B /* AppDelegate.h */,
 				F17F36481BD62B510091205B /* AppDelegate.m */,
@@ -94,28 +92,14 @@
 		F17F365F1BD636B60091205B /* MarqueeBar */ = {
 			isa = PBXGroup;
 			children = (
-				F17F36601BD636B60091205B /* MarqueeBar.h */,
-				F17F36611BD636B60091205B /* MarqueeBar.m */,
+				F17F36601BD636B60091205B /* VMarqueeBar.h */,
+				F17F36611BD636B60091205B /* VMarqueeBar.m */,
+				F1489ABD1DE2E714000AD269 /* V2MarqueeBar.h */,
+				F1489ABE1DE2E714000AD269 /* V2MarqueeBar.m */,
+				F1489AC01DE2F28D000AD269 /* V3MarqueeBar.h */,
+				F1489AC11DE2F28D000AD269 /* V3MarqueeBar.m */,
 			);
 			path = MarqueeBar;
-			sourceTree = "<group>";
-		};
-		F17F36631BD636C60091205B /* Paoma */ = {
-			isa = PBXGroup;
-			children = (
-				F17F36671BD637080091205B /* TextFlowView.m */,
-				F17F36681BD637080091205B /* TextFlowView.h */,
-			);
-			path = Paoma;
-			sourceTree = "<group>";
-		};
-		F17F366A1BD637EE0091205B /* VAutoScrollLabel */ = {
-			isa = PBXGroup;
-			children = (
-				F17F366B1BD637EE0091205B /* VAutoScrollLabel.h */,
-				F17F366C1BD637EE0091205B /* VAutoScrollLabel.m */,
-			);
-			path = VAutoScrollLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +128,7 @@
 		F17F36391BD62B500091205B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Vols;
 				TargetAttributes = {
 					F17F36401BD62B510091205B = {
@@ -188,10 +172,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F17F36621BD636B60091205B /* MarqueeBar.m in Sources */,
+				F17F36621BD636B60091205B /* VMarqueeBar.m in Sources */,
+				F1489AC21DE2F28D000AD269 /* V3MarqueeBar.m in Sources */,
 				F17F364C1BD62B510091205B /* ViewController.m in Sources */,
-				F17F36691BD637080091205B /* TextFlowView.m in Sources */,
-				F17F366D1BD637EE0091205B /* VAutoScrollLabel.m in Sources */,
+				F1489ABF1DE2E714000AD269 /* V2MarqueeBar.m in Sources */,
 				F17F36491BD62B510091205B /* AppDelegate.m in Sources */,
 				F17F36461BD62B510091205B /* main.m in Sources */,
 			);
@@ -232,8 +216,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -275,8 +261,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -340,6 +328,7 @@
 				F17F365A1BD62B510091205B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
