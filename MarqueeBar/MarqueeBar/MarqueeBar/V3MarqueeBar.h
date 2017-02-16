@@ -10,13 +10,12 @@
 
 @interface V3MarqueeBar : UIView
 
+@property (nonatomic, strong) NSString  * title;
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString*)title;
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title;
 
 - (void)updateTitle:(NSString*)title;
 
-
 - (void)resume;
-- (void)resumeAndStart;
 
 @end

@@ -133,6 +133,7 @@
 				TargetAttributes = {
 					F17F36401BD62B510091205B = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = NRQ862A7E8;
 					};
 				};
 			};
@@ -291,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NRQ862A7E8;
 				INFOPLIST_FILE = MarqueeBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MarqueeBar;
@@ -302,6 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NRQ862A7E8;
 				INFOPLIST_FILE = MarqueeBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MarqueeBar;

@@ -16,75 +16,71 @@
     NSTimer     * _timer;
 }
 
-@property (nonatomic, strong) UILabel *labelOne;
-@property (nonatomic, strong) UILabel *labelTwo;
+@property (nonatomic, strong) UILabel *firstLabel;
+@property (nonatomic, strong) UILabel *secondLabel;
 @property (nonatomic, strong) NSMutableArray *labelArray;
 
 @end
 
 @implementation V3MarqueeBar
 
-- (NSMutableArray *)labelArray{
-    if (!_labelArray) {
-        self.labelArray = [NSMutableArray arrayWithCapacity:0];
-    }
-    return _labelArray;
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title {
+    V3MarqueeBar * marqueeBar = [[V3MarqueeBar alloc] initWithFrame:frame];
+    marqueeBar.title = title;
+    return marqueeBar;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString*)title{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        NSString *raceStr = [NSString stringWithFormat:@"%@    ",title];
+        [self addSubview:self.firstLabel];
+        [self addSubview:self.secondLabel];
         
-        [self addSubview:self.labelOne];
-        [self addSubview:self.labelTwo];
-        _labelOne.text = raceStr;
-        _labelTwo.text = raceStr;
-
-        self.labelOne.frame = CGRectMake(0, 0, [self getStringWidth:raceStr], frame.size.height);
-        self.labelTwo.frame = CGRectMake(_labelOne.frame.origin.x + _labelOne.bounds.size.width, _labelOne.frame.origin.y, _labelOne.bounds.size.width, _labelOne.bounds.size.height);
-        
-        [self.labelArray addObject:_labelOne];
-        [self.labelArray addObject:_labelTwo];
-        _labelTwo.hidden = ![self isNeedRaceAnimate];
+        [self.labelArray addObject:_firstLabel];
+        [self.labelArray addObject:_secondLabel];
     }
     return self;
 }
 
-- (void)updateTitle:(NSString *)title{
+
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    
     if (_timer) {
         [_timer invalidate];
         _timer = nil;
     }
+
     NSString *raceStr = [NSString stringWithFormat:@"%@    ",title];
-    _labelOne.frame = CGRectMake(0, 0, [self getStringWidth:raceStr], self.bounds.size.height);
-    _labelTwo.frame = CGRectMake(_labelOne.frame.origin.x + _labelOne.bounds.size.width, _labelOne.frame.origin.y, _labelOne.bounds.size.width, _labelOne.bounds.size.height);
-    _labelOne.text = raceStr;
-    _labelTwo.text = raceStr;
-    _labelTwo.hidden = ![self isNeedRaceAnimate];
+    _firstLabel.text = raceStr;
+    _secondLabel.text = raceStr;
+    
+    self.firstLabel.frame = CGRectMake(0, 0, [self getStringWidth:raceStr], self.frame.size.height);
+    self.secondLabel.frame = CGRectMake(_firstLabel.frame.origin.x + _firstLabel.bounds.size.width, _firstLabel.frame.origin.y, _firstLabel.bounds.size.width, _firstLabel.bounds.size.height);
+    
+    _secondLabel.hidden = ![self isNeedRaceAnimate];
+    
     if ([self isNeedRaceAnimate]) {
         [self startAnimation];
     }
 }
 
+- (void)updateTitle:(NSString *)title {
+    self.title = title;
+}
+
 - (BOOL)isNeedRaceAnimate{
-    return !(_labelOne.bounds.size.width <= self.bounds.size.width);
+    return !(_firstLabel.bounds.size.width <= self.bounds.size.width);
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    if (_timer) {
-        [_timer invalidate];
-        _timer = nil;
+
+    if (_firstLabel && _secondLabel) {
+        _firstLabel.frame = CGRectMake(0, 0, _firstLabel.bounds.size.width, self.bounds.size.height);
+        _secondLabel.frame = CGRectMake(_firstLabel.frame.origin.x + _firstLabel.bounds.size.width, _firstLabel.frame.origin.y, _firstLabel.bounds.size.width, _firstLabel.bounds.size.height);
     }
-    if (_labelOne && _labelTwo) {
-        _labelOne.frame = CGRectMake(0, 0, _labelOne.bounds.size.width, self.bounds.size.height);
-        _labelTwo.frame = CGRectMake(_labelOne.frame.origin.x + _labelOne.bounds.size.width, _labelOne.frame.origin.y, _labelOne.bounds.size.width, _labelOne.bounds.size.height);
-    }
-    _labelTwo.hidden = ![self isNeedRaceAnimate];
-    if ([self isNeedRaceAnimate]) {
-        [self startAnimation];
-    }
+    _secondLabel.hidden = ![self isNeedRaceAnimate];
 }
 
 
@@ -95,22 +91,22 @@
 }
 
 - (void)raceLabelFrameChanged:(NSTimer *)timer{
-    UILabel *labelOne = [self.labelArray firstObject];
-    UILabel *labelTwo = [self.labelArray lastObject];
-    CGRect frameOne = labelOne.frame;
-    CGRect frameTwo = labelTwo.frame;
-    CGFloat firstX = labelOne.frame.origin.x;
-    CGFloat secondX = labelTwo.frame.origin.x;
+    UILabel *firstLabel = [self.labelArray firstObject];
+    UILabel *secondLabel = [self.labelArray lastObject];
+    CGRect frameOne = firstLabel.frame;
+    CGRect frameTwo = secondLabel.frame;
+    CGFloat firstX = firstLabel.frame.origin.x;
+    CGFloat secondX = secondLabel.frame.origin.x;
     firstX -= 0.5;
     secondX -= 0.5;
-    if (ABS(firstX) >= labelOne.bounds.size.width) {
-        firstX = secondX + labelOne.bounds.size.width;
+    if (ABS(firstX) >= firstLabel.bounds.size.width) {
+        firstX = secondX + firstLabel.bounds.size.width;
         [self.labelArray exchangeObjectAtIndex:0 withObjectAtIndex:1];
     }
     frameOne.origin.x = firstX;
     frameTwo.origin.x = secondX;
-    labelOne.frame = frameOne;
-    labelTwo.frame = frameTwo;
+    firstLabel.frame = frameOne;
+    secondLabel.frame = frameTwo;
 }
 
 - (void)resume{
@@ -126,8 +122,8 @@
         [_timer invalidate];
         _timer = nil;
     }
-    _labelOne.frame = CGRectMake(0, 0, _labelOne.bounds.size.width, self.bounds.size.height);
-    _labelTwo.frame = CGRectMake(_labelOne.frame.origin.x + _labelOne.bounds.size.width, _labelOne.frame.origin.y, _labelOne.bounds.size.width, _labelOne.bounds.size.height);
+    _firstLabel.frame = CGRectMake(0, 0, _firstLabel.bounds.size.width, self.bounds.size.height);
+    _secondLabel.frame = CGRectMake(_firstLabel.frame.origin.x + _firstLabel.bounds.size.width, _firstLabel.frame.origin.y, _firstLabel.bounds.size.width, _firstLabel.bounds.size.height);
     if (start) {
         [self startAnimation];
     }
@@ -136,24 +132,31 @@
 
 
 #pragma mark - Properties
-- (UILabel *)labelOne {
-    if (_labelOne == nil) {
-        _labelOne = [[UILabel alloc] init];
-        _labelOne.font = kDefaultFont;
-        _labelOne.textColor = [UIColor whiteColor];
-        _labelOne.textAlignment = NSTextAlignmentCenter;
+- (UILabel *)firstLabel {
+    if (_firstLabel == nil) {
+        _firstLabel = [[UILabel alloc] init];
+        _firstLabel.font = kDefaultFont;
+        _firstLabel.textColor = [UIColor whiteColor];
+        _firstLabel.textAlignment = NSTextAlignmentCenter;
     }
-    return _labelOne;
+    return _firstLabel;
 }
 
-- (UILabel *)labelTwo {
-    if (_labelTwo == nil) {
-        _labelTwo = [[UILabel alloc] init];
-        _labelTwo.font = kDefaultFont;
-        _labelTwo.textColor = [UIColor whiteColor];
-        _labelTwo.textAlignment = NSTextAlignmentCenter;
+- (UILabel *)secondLabel {
+    if (_secondLabel == nil) {
+        _secondLabel = [[UILabel alloc] init];
+        _secondLabel.font = kDefaultFont;
+        _secondLabel.textColor = [UIColor whiteColor];
+        _secondLabel.textAlignment = NSTextAlignmentCenter;
     }
-    return _labelTwo;
+    return _secondLabel;
+}
+
+- (NSMutableArray *)labelArray{
+    if (!_labelArray) {
+        self.labelArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _labelArray;
 }
 
 

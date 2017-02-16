@@ -10,6 +10,8 @@
 
 #define SPACE_WIDTH     50
 #define LABEL_NUM       2
+#define kDefaultSpeed     60.0
+
 
 @interface V2MarqueeBar () {
     
@@ -17,12 +19,11 @@
     UILabel     * _secondLabel;
     
     NSTimer     * _timer;
-    NSString    * _text;
+    NSString    * _title;
     UIFont      * _font;
 
     BOOL        _needFlow;      //是否需要滚动
     
-    CGRect      _frame;
     NSInteger   _startIndex;    //当前第一个控件的索引
     CGFloat     _XOffset;       //定时器每次执行偏移后，累计的偏移量之和
     CGSize      _textSize;      //文本显示一行，需要的框架大小
@@ -32,34 +33,65 @@
 
 @implementation V2MarqueeBar
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title {
+#pragma mark - LifeCycle
+
+- (void)dealloc {
+    
+}
+
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title {
+    V2MarqueeBar * marqueeBar = [[V2MarqueeBar alloc] initWithFrame:frame];
+    marqueeBar.title = title;
+    return marqueeBar;
+}
+
+
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        _text       = title;
-        _frame      = frame;
-        _font       = [UIFont systemFontOfSize:16.0];       //默认的字体大小
-        _tintColor  = [UIColor whiteColor];
-        self.backgroundColor = [UIColor blackColor];        //默认背景色
-        
-        _textSize = [self getStringWidth:_text font:_font]; //初始化标签,判断是否需要滚动效果
-
-        if (_textSize.width > frame.size.width) {
-            _needFlow = YES;
-            [self startRun];
-        }
+        [self initStatus];
     }
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initStatus];
+    }
+    return self;
+}
+
+- (void)initStatus {
+    _font       = [UIFont systemFontOfSize:16.0];       //默认的字体大小
+    _tintColor  = [UIColor whiteColor];
+    self.backgroundColor = [UIColor blackColor];        //默认背景色
+}
+
+
+- (void)updateTitle:(NSString *)title {
+    self.title = title;
+}
+
+
+
+#pragma mark - Setter 属性
+
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    
+    [self cancelRun];
+    
+    _textSize = [self getStringWidth:_title font:_font]; //初始化标签,判断是否需要滚动效果
+    
+    if (_textSize.width > self.frame.size.width) {
+        _needFlow = YES;
+        [self startRun];
+    }
+}
 
 - (void)setFont:(UIFont *)font {
     _font = font;
-    
-    [self setNeedsDisplay];
-}
-
-- (void)setTitle:(NSString *)title {
-    _text = title;
     
     [self setNeedsDisplay];
 }
@@ -70,17 +102,11 @@
     [self setNeedsDisplay];
 }
 
-//改变一个Rect的起始点位置，但是其终止点的位置不变，因此会导致整个框架大小的变化
-- (CGRect)moveNewPoint:(CGPoint)point rect:(CGRect)rect {
-    CGSize tmpSize;
-    tmpSize.height = rect.size.height + (rect.origin.y - point.y);
-    tmpSize.width = rect.size.width + (rect.origin.x - point.x);
-    return CGRectMake(point.x, point.y, tmpSize.width, tmpSize.height);
-}
 
+#pragma mark - Action Methods
 
 - (void)startRun {
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 / kDefaultSpeed target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
 }
 
 
@@ -101,6 +127,16 @@
     [self setNeedsDisplay];
 }
 
+#pragma mark - 
+
+//改变一个Rect的起始点位置，但是其终止点的位置不变，因此会导致整个框架大小的变化
+- (CGRect)moveNewPoint:(CGPoint)point rect:(CGRect)rect {
+    CGSize tmpSize;
+    tmpSize.height = rect.size.height + (rect.origin.y - point.y);
+    tmpSize.width = rect.size.width + (rect.origin.x - point.x);
+    return CGRectMake(point.x, point.y, tmpSize.width, tmpSize.height);
+}
+
 - (void)drawRect:(CGRect)rect {
     CGContextRef context= UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
@@ -119,7 +155,7 @@
                                        NSParagraphStyleAttributeName:paragraphStyle,
                                        NSForegroundColorAttributeName:_tintColor
                                        };
-            [_text drawWithRect:rect options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
+            [_title drawWithRect:rect options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
             
             rect = [self moveNewPoint:CGPointMake(rect.origin.x+_textSize.width+SPACE_WIDTH, rect.origin.y) rect:rect];
         }
@@ -137,16 +173,13 @@
                                    NSParagraphStyleAttributeName:paragraphStyle,
                                    NSForegroundColorAttributeName:_tintColor
                                    };
-        [_text drawWithRect:rect options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
+        [_title drawWithRect:rect options:NSStringDrawingUsesLineFragmentOrigin attributes:attribute context:nil];
 
     }
 }
 
 
-- (void)dealloc {
-    
-}
-
+#pragma mark - Helpers
 
 - (CGSize)getStringWidth:(NSString *)string font:(UIFont *)font{
     if (string) {

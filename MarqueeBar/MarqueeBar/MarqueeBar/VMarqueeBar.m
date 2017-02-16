@@ -9,13 +9,13 @@
 #import "VMarqueeBar.h"
 
 #define kTextColor      [UIColor redColor]
-#define kTextFontSize   14
+#define kTextFontSize   15
 
 @interface VMarqueeBar () {
     
     CGRect rectMark1;   //标记第一个位置
     CGRect rectMark2;   //标记第二个位置
-    
+
     CGSize labelSize;
     
     NSMutableArray* labelArr;
@@ -28,47 +28,65 @@
 
 @implementation VMarqueeBar
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title {
+#pragma mark - LifeCycle
+
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title {
+    VMarqueeBar * marqueeBar = [[VMarqueeBar alloc] initWithFrame:frame];
+    marqueeBar.title = title;
+    return marqueeBar;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _tintColor  = [UIColor redColor];               //默认颜色
-        _textFont   = [UIFont boldSystemFontOfSize:14]; //默认文字大小
-        
-        [self configureViewWithTitle:title];
+        [self initStatus];
     }
     return self;
 }
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _tintColor  = [UIColor redColor];               //默认颜色
-        _textFont   = [UIFont boldSystemFontOfSize:14]; //默认文字大小
+        [self initStatus];
     }
     return self;
 }
 
-//SB（Xib）方式 手动调用此方法
-- (void)configureViewWithTitle:(NSString *)text {
 
-    _text           = [NSString stringWithFormat:@"  %@  ",text];//间隔
-    timeInterval    = [self displayDurationForString:text];
-    
+/*
+ *  默认设置
+ */
+- (void)initStatus {
+    _tintColor  = [UIColor redColor];               //默认颜色
+    _textFont   = [UIFont systemFontOfSize:15];     //默认文字大小
     self.backgroundColor    = [UIColor blackColor];
     self.clipsToBounds      = YES;
+}
+
+
+- (void)updateTitle:(NSString *)title {
+    self.title = title;
+}
+
+#pragma mark - Setter
+
+- (void)setTitle:(NSString *)title {
+    _title = title;
     
-    //
+    _title          = [NSString stringWithFormat:@"  %@  ",title];//间隔
+    timeInterval    = [self displayDurationForString:title];
+    
     UILabel * textLb = [[UILabel alloc] initWithFrame:CGRectZero];
     textLb.textColor = _tintColor;
     textLb.font = _textFont;
-    textLb.text = text;
+    textLb.text = title;
     
-    //计算textLb大小
     labelSize = [textLb sizeThatFits:CGSizeZero];
     
     rectMark1 = CGRectMake(0, 0, labelSize.width + 20, self.bounds.size.height);
     rectMark2 = CGRectMake(rectMark1.size.width, 0, rectMark1.size.width, rectMark1.size.height);
-
+    
     textLb.frame = rectMark1;
     [self addSubview:textLb];
     
@@ -78,6 +96,28 @@
 }
 
 
+- (void)setTintColor:(UIColor *)tintColor{
+    _tintColor = tintColor;
+    
+    [labelArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UILabel * label = (UILabel *)obj;
+        label.textColor = tintColor;
+    }];
+}
+
+
+- (void)setTextFont:(UIFont *)textFont {
+    _textFont = textFont;
+
+    [labelArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UILabel * label = (UILabel *)obj;
+        label.font = textFont;
+    }];
+}
+
+
+#pragma mark - Animation
+
 - (void)startAnimate{
 
     UILabel* lbindex0 = labelArr[0];
@@ -85,7 +125,7 @@
     
     [UIView transitionWithView:self duration:timeInterval options:UIViewAnimationOptionCurveLinear animations:^{
         
-        lbindex0.frame = CGRectMake(-rectMark1.size.width, 0, rectMark1.size.width, rectMark1.size.height);
+        lbindex0.frame = CGRectMake(-rectMark1.size.width-150, 0, rectMark1.size.width, rectMark1.size.height);
         lbindex1.frame = CGRectMake(0, 0, rectMark2.size.width, rectMark2.size.height);
         
     } completion:^(BOOL finished) {
@@ -99,9 +139,8 @@
     }];
 }
 
-
 - (void)start {
-    
+
     //判断是否需要reserveTextLb
     BOOL useReserve = labelSize.width > self.bounds.size.width ? YES : NO;
     
@@ -110,7 +149,7 @@
         UILabel* reserveTextLb = [[UILabel alloc] initWithFrame:rectMark2];
         reserveTextLb.textColor = _tintColor;
         reserveTextLb.font = _textFont;
-        reserveTextLb.text = self.text;
+        reserveTextLb.text = self.title;
         [self addSubview:reserveTextLb];
         
         [labelArr addObject:reserveTextLb];
@@ -121,17 +160,9 @@
 
 
 - (NSTimeInterval)displayDurationForString:(NSString*)string {
-    return string.length/3;
+    return string.length/2.f;
 }
 
 
-- (void)setTintColor:(UIColor *)tintColor{
-    _tintColor = tintColor;
-    
-    [labelArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        UILabel * label = (UILabel *)obj;
-        label.textColor = tintColor;
-    }];
-}
 
 @end

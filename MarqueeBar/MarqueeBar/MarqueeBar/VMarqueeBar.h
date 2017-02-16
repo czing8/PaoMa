@@ -8,21 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+/*********************************
+ *
+ *  支持Storyboard，xib，支持Autolayout 、masonry。手动赋值title属性。
+ *
+ *********************************/
 
 @interface VMarqueeBar : UIView
 
-@property (nonatomic, strong) NSString  * text;
+@property (nonatomic, strong) NSString  * title;
 @property (nonatomic, strong) UIColor   * tintColor;
 @property (nonatomic, strong) UIFont    * textFont;
 
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title;
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString*)title;
-
-/*
- *  当用initWithFrame 方式初始化时调用
- */
-- (void)configureViewWithTitle:(NSString *)title;
-
-- (void)start;
+- (void)updateTitle:(NSString*)title;
 
 @end

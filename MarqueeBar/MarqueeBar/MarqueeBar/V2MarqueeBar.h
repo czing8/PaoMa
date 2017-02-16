@@ -10,12 +10,12 @@
 
 @interface V2MarqueeBar : UIView
 
+@property (nonatomic, strong) NSString  * title;
 @property (nonatomic, strong) UIColor   * tintColor;
 @property (nonatomic, strong) UIFont    * titleFont;
 
++ (instancetype)marqueeBarWithFrame:(CGRect)frame title:(NSString*)title;
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
-
-- (void)setTitle:(NSString *)title;
+- (void)updateTitle:(NSString*)title;
 
 @end
